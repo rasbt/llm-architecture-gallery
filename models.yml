@@ -719,6 +719,40 @@ Tencent Hy3-preview 295B-A21B:
   hide_article_link: true
   tech_report:
     url: https://www.tencent.com/en-us/articles/2202320.html
+Tencent Hy4-preview 770B-A49B:
+  company: Tencent
+  image: "https://sebastianraschka.com/llm-architecture-gallery/images/architectures/tencent-hy4.webp"
+  date: '2026-08-28'
+  summary: Tencent's 770B sparse MoE combines gated DeepSeek Sparse Attention, cross-layer index reuse, and four-stream identity Hyper-Connections.
+  scale: 770B backbone, 49B active (6.4% active); plus 10B MTP
+  context_tokens: '1,048,576'
+  vocab_size: '120,832 (~121k)'
+  license_name: Apache License 2.0
+  license_url: https://huggingface.co/tencent/Hy4-preview/blob/main/LICENSE
+  decoder_type: Sparse MoE
+  attention: Gated MLA with DeepSeek Sparse Attention and IndexCache
+  layer_mix: '78 gated MLA/DSA + 1 MTP layer'
+  kv_cache_per_token_bf16: '87.8 KiB'
+  highlight: Uses 256 routed experts with 8 routed plus 1 shared expert active per token, a top-2,048 DSA indexer, cross-layer index reuse, and four iHC residual streams.
+  related_concepts:
+    - mhc
+    - mla
+    - deepseek_sparse_attention
+    - index_share
+    - gated_attention
+    - moe
+    - mtp
+    - rmsnorm
+    - rope
+    - silu
+  aa_intelligence_index: 'N/A'
+  aai_profile: 'N/A'
+  aa_url:
+  config:
+    repo: tencent/Hy4-preview
+    label: config.json
+    url: https://huggingface.co/tencent/Hy4-preview/blob/main/config.json
+  hide_article_link: true
 INTELLECT-3:
   company: Prime Intellect
   image: "https://sebastianraschka.com/llm-architecture-gallery/images/architectures/intellect-3.webp"
@@ -2129,6 +2163,44 @@ Qwen3.8 27B:
     label: config.json
     url: https://huggingface.co/Qwen/Qwen3.8-27B/blob/main/config.json
   hide_article_link: true
+Qwen3.8-Flash-Next 125B-A6B:
+  company: Alibaba Cloud
+  image: "https://sebastianraschka.com/llm-architecture-gallery/images/architectures/qwen3-8-flash-next.webp"
+  date: '2026-08-26'
+  summary: Experimental vision-language MoE whose text backbone combines Gated DeltaNet, micro-block QSA, four-branch gated residuals, and n-gram embeddings; the figure omits the vision encoder and MTP head.
+  scale: 125B core, 6B active (4.8% active); plus 51B n-gram embeddings and 4B MTP
+  context_tokens: '262,144'
+  vocab_size: '248,320 (~248k)'
+  license_name: Qwen Community License 1.0
+  license_url: https://huggingface.co/Qwen/Qwen3.8-Flash-Next/blob/main/LICENSE
+  decoder_type: Sparse hybrid
+  attention: 3:1 Gated DeltaNet and Qwen Sparse Attention (QSA)
+  layer_mix: '12 QSA + 36 DeltaNet'
+  kv_cache_per_token_bf16: '24 KiB'
+  highlight: Replaces full attention with micro-block QSA while using four gated residual branches and a 20M-entry n-gram embedding at layer 2.
+  related_concepts:
+    - gated_deltanet
+    - qwen_sparse_attention
+    - gated_residuals
+    - gqa
+    - gated_attention
+    - per_layer_embeddings
+    - moe
+    - qk_norm
+    - rmsnorm
+    - rope
+    - silu
+    - mtp
+  aa_intelligence_index: '56.0'
+  aai_profile: 'N/A'
+  aa_url: https://artificialanalysis.ai/models/qwen3-8-flash-next
+  config:
+    repo: Qwen/Qwen3.8-Flash-Next
+    label: config.json
+    url: https://huggingface.co/Qwen/Qwen3.8-Flash-Next/blob/main/config.json
+  hide_article_link: true
+  tech_report:
+    url: https://github.com/QwenLM/Qwen3.8-Flash-Next/blob/main/tech_report.pdf
 Sarvam 105B:
   company: Sarvam AI
   image: "https://sebastianraschka.com/llm-architecture-gallery/images/architectures/sarvam-105b.webp"
