@@ -58,6 +58,9 @@ BTL-3 27B:
   date: '2026-07-20'
   summary: Agent-oriented Qwen3.6-27B derivative that adds a rank-32 LoRA adapter for coding, structured tool use, and long multi-turn execution.
   scale: 27B base + 934 MB LoRA adapter
+  memory_calculator:
+    parameter_count: 27000000000
+    weight_note: "Counts the 27B base only. The separately listed 934 MB LoRA adapter is excluded; its runtime size depends on precision and whether it is merged."
   context_tokens: '262,144'
   vocab_size: '248,320 (~248k)'
   license_name: Apache License 2.0
@@ -158,6 +161,9 @@ DeepSeek V4-Pro:
   date: '2026-04-24'
   summary: DeepSeek's flagship V4 preview scales to 1.6T parameters and introduces compressed sparse attention plus manifold-constrained hyper-connections for million-token contexts.
   scale: 1.6T total, 49B active (3.1% active)
+  memory_calculator:
+    cache_supported: false
+    cache_note: "CSA/HCA mixes compressed caches with local retention. The gallery's per-token figure is insufficient to calculate total cache memory, so no cache or combined estimate is shown."
   context_tokens: '1,048,576'
   license_name: MIT License
   license_url: https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro/blob/main/LICENSE
@@ -188,6 +194,9 @@ DeepSeek V4-Flash:
   date: '2026-04-24'
   summary: DeepSeek's efficient V4 preview keeps the million-token architecture while reducing the MoE scale to 284B parameters and 13B active parameters.
   scale: 284B total, 13B active (4.6% active)
+  memory_calculator:
+    cache_supported: false
+    cache_note: "CSA/HCA mixes compressed caches with local retention. The gallery's per-token figure is insufficient to calculate total cache memory, so no cache or combined estimate is shown."
   context_tokens: '1,048,576'
   license_name: MIT License
   license_url: https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash/blob/main/LICENSE
@@ -725,6 +734,9 @@ Tencent Hy4-preview 770B-A49B:
   date: '2026-08-28'
   summary: Tencent's 770B sparse MoE combines gated DeepSeek Sparse Attention, cross-layer index reuse, and four-stream identity Hyper-Connections.
   scale: 770B backbone, 49B active (6.4% active); plus 10B MTP
+  memory_calculator:
+    parameter_count: 770000000000
+    weight_note: "Counts the 770B backbone. The separately listed 10B optional MTP module is excluded."
   context_tokens: '1,048,576'
   vocab_size: '120,832 (~121k)'
   license_name: Apache License 2.0
@@ -1811,6 +1823,37 @@ OLMo 3 7B:
     url: https://arxiv.org/pdf/2512.13961
   from_scratch:
     url: https://github.com/rasbt/LLMs-from-scratch/tree/main/ch05/13_olmo3
+Ouro-Thinking 2.6B:
+  company: ByteDance
+  image: "https://sebastianraschka.com/llm-architecture-gallery/images/architectures/ouro-2-6b.webp"
+  date: '2025-10-29'
+  summary: ByteDance's dense LoopLM reuses one 48-layer MHA stack across four recurrent passes and trains an exit gate over the intermediate representations.
+  scale: 2.6B parameters
+  context_tokens: '65,536'
+  vocab_size: '49,152 (~49k)'
+  license_name: Apache License 2.0
+  license_url: https://huggingface.co/ByteDance/Ouro-2.6B-Thinking/blob/main/README.md#license
+  decoder_type: Dense
+  attention: MHA with RoPE
+  layer_mix: '48 shared MHA layers × 4 passes'
+  kv_cache_per_token_bf16: '1.5 MiB'
+  highlight: Reuses the same 48-layer MHA stack across four passes, yielding 192 block applications, with sandwich RMSNorm and a learned exit gate.
+  related_concepts:
+    - looped_depth_sharing
+    - mha
+    - rmsnorm
+    - rope
+    - silu
+  aa_intelligence_index: 'N/A'
+  aai_profile: 'N/A'
+  aa_url:
+  config:
+    repo: ByteDance/Ouro-2.6B-Thinking
+    label: config.json
+    url: https://huggingface.co/ByteDance/Ouro-2.6B-Thinking/blob/main/config.json
+  hide_article_link: true
+  tech_report:
+    url: https://arxiv.org/abs/2510.25741
 Ornith 1.5 35B-A3B:
   company: Ornith
   image: "https://sebastianraschka.com/llm-architecture-gallery/images/architectures/ornith-1-5-35b-a3b.webp"
@@ -2169,6 +2212,9 @@ Qwen3.8-Flash-Next 125B-A6B:
   date: '2026-08-26'
   summary: Experimental vision-language MoE whose text backbone combines Gated DeltaNet, micro-block QSA, four-branch gated residuals, and n-gram embeddings; the figure omits the vision encoder and MTP head.
   scale: 125B core, 6B active (4.8% active); plus 51B n-gram embeddings and 4B MTP
+  memory_calculator:
+    parameter_count: 176000000000
+    weight_note: "Counts the 125B core plus 51B n-gram embeddings, all resident in memory. The separately listed 4B optional MTP module is excluded."
   context_tokens: '262,144'
   vocab_size: '248,320 (~248k)'
   license_name: Qwen Community License 1.0
