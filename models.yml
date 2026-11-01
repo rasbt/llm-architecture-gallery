@@ -187,7 +187,7 @@ DeepSeek V4-Pro:
     label: config.json
     url: https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro/blob/main/config.json
   tech_report:
-    url: https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro/blob/main/DeepSeek_V4.pdf
+    url: https://arxiv.org/abs/2606.19348
 DeepSeek V4-Flash:
   company: DeepSeek
   image: "https://sebastianraschka.com/llm-architecture-gallery/images/architectures/deepseek-v4-flash.webp"
@@ -220,7 +220,7 @@ DeepSeek V4-Flash:
     label: config.json
     url: https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash/blob/main/config.json
   tech_report:
-    url: https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash/blob/main/DeepSeek_V4.pdf
+    url: https://arxiv.org/abs/2606.19348
 DeepSeek V4.1-Flash:
   company: DeepSeek
   image: "https://sebastianraschka.com/llm-architecture-gallery/images/architectures/deepseek-v4-1-flash.webp"
@@ -1318,9 +1318,9 @@ LongCat-Flash-Lite 68.5B-A3B:
   license_url: https://huggingface.co/meituan-longcat/LongCat-Flash-Lite/blob/main/README.md
   decoder_type: Sparse MoE
   attention: MLA with RoPE + NoPE
-  layer_mix: '28 logical layers / 56 MLA sublayers'
-  kv_cache_per_token_bf16: '63 KiB'
-  highlight: Uses N-gram embedding expansion, Shortcut MoE routing over 512 routed plus 256 zero/identity experts, and top-k 12 expert choices per token.
+  layer_mix: '14 logical layers / 28 MLA sublayers'
+  kv_cache_per_token_bf16: '31.5 KiB'
+  highlight: Uses N-gram embedding expansion, Shortcut MoE routing over 256 routed plus 128 zero/identity experts, and top-k 12 expert choices per token.
   related_concepts:
     - mla
     - moe
