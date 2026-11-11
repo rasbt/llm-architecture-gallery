@@ -1,6 +1,10 @@
 # LLM Architecture Gallery
 
-This repository contains the source model metadata for the [LLM Architecture Gallery](https://sebastianraschka.com/llm-architecture-gallery/).
+This repository contains a public snapshot of the LLM Architecture Gallery metadata, updated quarterly.
+
+For weekly metadata exports and a ZIP of the architecture images, see the [Ahead of AI subscriber perks](https://magazine.sebastianraschka.com/perks). Subscriptions help support the gallery’s ongoing development.
+
+The [interactive gallery](https://sebastianraschka.com/llm-architecture-gallery/) remains freely accessible and regularly updated.
 
 <br>
 
